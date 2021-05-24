@@ -18,6 +18,9 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders;
 
+    @Enumerated(EnumType.STRING)
+    private MemberType type;
+
     public Long getId() {
         return id;
     }

@@ -66,25 +66,31 @@ public class JpaMain {
 
 
             // 여러 타입을 가져오는 방법
-            Query queryObject = em.createQuery("select m.username, m.age from Member m");
-
-            List resultList = queryObject.getResultList();
-
-            for (Object o : resultList) {
-                Object[] arrayO = (Object[]) o;
-                System.out.println("username : " + arrayO[0]);
-                System.out.println("age : " + arrayO[1]);
-            }
-
-
-            List<Object[]> resultList2 = queryObject.getResultList();
-
-            for (Object[] objects : resultList2) {
-                System.out.println("username : " + objects[0]);
-                System.out.println("age : " + objects[1]);
-            }
+//            Query queryObject = em.createQuery("select m.username, m.age from Member m");
+//
+//            List resultList = queryObject.getResultList();
+//
+//            for (Object o : resultList) {
+//                Object[] arrayO = (Object[]) o;
+//                System.out.println("username : " + arrayO[0]);
+//                System.out.println("age : " + arrayO[1]);
+//            }
+//
+//
+//            List<Object[]> resultList2 = queryObject.getResultList();
+//
+//            for (Object[] objects : resultList2) {
+//                System.out.println("username : " + objects[0]);
+//                System.out.println("age : " + objects[1]);
+//            }
             // ---------
 
+
+
+            //executeUpdate
+            Query query = em.createQuery("update Member m set m.age = m.age + 1");
+            //FLUSH 자동호출
+            query.executeUpdate();
 
 
 //            TypedQuery<Member> innerJoinQuery = em.createQuery("select m from Member m inner join m.team t", Member.class);
